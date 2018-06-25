@@ -159,25 +159,13 @@ withdraw-rosdeps() {
     cd $ORIG_DIR
 }
 
+
 install-rosbash() {
     ## Install dependencies for some rosbash functions
     sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu `lsb_release -sc` main" > /etc/apt/sources.list.d/ros-latest.list'
     wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
     sudo apt-get update
     sudo apt-get install python-catkin-tools python-bloom dpkg-dev debhelper -y
-}
-
-# Install all public deps of a private catkin repo
-install-repo-deps() {
-    # Remember current dir
-    local ORIG_DIR="$(pwd)"
-    roscd && cd ..
-    for p in $(catkin list --quiet -u); do
-        echo Installing public dependencies for $p...
-        rosdep install -i $p
-    done
-    # Return to initial dir for convenience
-    cd $ORIG_DIR
 }
 
 # Generate deb files for all private packages in repo; installs them
