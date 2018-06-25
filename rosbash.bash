@@ -145,6 +145,7 @@ inject-rosdeps() {
         key="ros-${ROS_DISTRO}-$(echo $pack | sed 's/_/-/g')"
         echo -e "${pack}:\n  $OS_NAME:\n    $OS_VERSION: [$key]" | sudo tee -a injected-keys.yaml
     done
+    rosdep update
     # Return to initial dir for convenience
     cd $ORIG_DIR
 }
@@ -184,7 +185,6 @@ all-todeb() {
         local NUM_BUILT=$(wc -l < /run/built_pkgs.txt)
         ALL_BUILT=1
         for p in $(catkin list --quiet -u | grep -Fxv -f /run/built_pkgs.txt); do
-            todeb $p
             if (( $? )); then
                 ALL_BUILT=0
             else
