@@ -62,7 +62,7 @@ alias groovy='rosshell source /opt/ros/groovy/setup.bash'
 alias kinetic='rosshell source /opt/ros/kinetic/setup.bash'
 alias devel='rosshell source devel/setup.bash'
 alias install='rosshell source install/setup.bash'
-alias install_deps="(roscd;cd ..;rosdep install --from-paths src --ignore-src --rosdistro hydro)"
+alias install_deps="(roscd;cd ..;rosdep install --from-paths src --ignore-src)"
 
 alias rosrefresh='(roscd;cd ..; rospack profile)'
 alias pydev='python $(rospack find mk)/make_pydev_project.py'
