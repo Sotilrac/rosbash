@@ -130,7 +130,7 @@ todeb() {
     fi
     local DEB_DIR="$(cd $DEB_DIR && pwd)"
     # Install public deps
-    rosdep install -i $1
+    rosdep install -i -y $1
     # Generate debian package
     roscd $1 &&
     # Remove old debian and obj-* dirs

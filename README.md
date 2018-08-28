@@ -76,7 +76,7 @@ todeb ROS_PACKAGE_NAME
 all-todeb
 
 ## to install all publicly available dependencies for the packages in your workspace
-install-repo-deps
+install_deps
 ```
 
 ### Other useful commands
